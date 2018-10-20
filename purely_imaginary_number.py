@@ -1,4 +1,4 @@
-from enum import Enum
+from imaginary_unit import 虚数単位
 
 
 class 虚部条件Error(Exception):
@@ -29,6 +29,3 @@ class PurelyImaginaryNumber:
         return PurelyImaginaryNumber(-1 * self.虚部)
 
 
-class 虚数単位(Enum):
-    plus = "i"
-    minus = "-i"
