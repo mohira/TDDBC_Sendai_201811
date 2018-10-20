@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from complex_number.imaginary_unit import ImaginaryUnit
 
 
@@ -13,7 +15,7 @@ class PurelyImaginaryNumber:
 
         self.value = imaginary_part
 
-    def __eq__(self, other) -> bool:
+    def __eq__(self, other: PurelyImaginaryNumber) -> bool:
         return self.value == other.value
 
     def notation(self) -> str:
@@ -25,5 +27,5 @@ class PurelyImaginaryNumber:
 
         return f"{self.value}{ImaginaryUnit.plus.value}"
 
-    def to_conjugate(self):
+    def to_conjugate(self) -> PurelyImaginaryNumber:
         return PurelyImaginaryNumber(-1 * self.value)

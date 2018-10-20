@@ -1,3 +1,6 @@
+from __future__ import annotations
+
+
 class RealPartConditionError(Exception):
     # 数学の定義では実部は実数であることが条件だが、現状は0以外の整数のみを実部条件とするのが仕様
     pass
@@ -10,5 +13,5 @@ class RealNumber:
 
         self.value = real_part
 
-    def __eq__(self, other):
+    def __eq__(self, other: RealNumber) -> bool:
         return self.value == other.value
