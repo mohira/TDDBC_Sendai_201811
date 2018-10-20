@@ -7,3 +7,6 @@ class ComplexNumber:
             return "-i"
 
         return f"{integer_number}i"
+
+    def 同一ですか(self, 純虚数その1, 純虚数その2):
+        return 純虚数その1 == 純虚数その2

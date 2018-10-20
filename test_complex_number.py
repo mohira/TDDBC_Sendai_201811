@@ -22,6 +22,18 @@ class TestImaginaryNumber(unittest.TestCase):
 
         self.assertEqual("-i", actual)
 
+    def test_2つの純虚数が同一である(self):
+        純虚数その1 = self.complex_number.create_純虚数_from整数(integer_number=3)
+        純虚数その2 = self.complex_number.create_純虚数_from整数(integer_number=3)
+
+        self.assertTrue(self.complex_number.同一ですか(純虚数その1, 純虚数その2))
+
+    def test_2つの純虚数が同一ではない(self):
+        純虚数その1 = self.complex_number.create_純虚数_from整数(integer_number=3)
+        純虚数その2 = self.complex_number.create_純虚数_from整数(integer_number=4)
+
+        self.assertFalse(self.complex_number.同一ですか(純虚数その1, 純虚数その2))
+
 
 if __name__ == "__main__":
     unittest.main()
