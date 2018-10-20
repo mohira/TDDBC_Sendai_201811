@@ -14,7 +14,7 @@ class PurelyImaginaryNumber:
         # 純虚数は実部がないので虚部のみの比較でOKのはず
         return self.虚部 == other.虚部
 
-    def value_as_str(self) -> str:
+    def to_str(self) -> str:
         if self.虚部 == 1:
             return 虚数単位.plus.value
 

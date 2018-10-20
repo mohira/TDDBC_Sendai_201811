@@ -6,13 +6,13 @@ from complex_number import PurelyImaginaryNumber
 class TestComplexNumber(unittest.TestCase):
     def test_整数を渡すと純虚数が文字列として返される(self):
         with self.subTest("正常系: 2 -> 2i"):
-            self.assertEqual("2i", PurelyImaginaryNumber(2).value_as_str())
+            self.assertEqual("2i", PurelyImaginaryNumber(2).to_str())
 
         with self.subTest("準正常系: 1 -> i"):
-            self.assertEqual("i", PurelyImaginaryNumber(1).value_as_str())
+            self.assertEqual("i", PurelyImaginaryNumber(1).to_str())
 
         with self.subTest("準正常系: -1 -> i"):
-            self.assertEqual("-i", PurelyImaginaryNumber(-1).value_as_str())
+            self.assertEqual("-i", PurelyImaginaryNumber(-1).to_str())
 
     def test_2つの純虚数の同一性の判定(self):
         with self.subTest("3i と 3i は同一である"):
