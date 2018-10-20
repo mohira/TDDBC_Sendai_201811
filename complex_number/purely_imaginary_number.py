@@ -1,4 +1,4 @@
-from imaginary_unit import 虚数単位
+from complex_number.imaginary_unit import 虚数単位
 
 
 class 虚部条件Error(Exception):

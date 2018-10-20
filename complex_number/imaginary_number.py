@@ -1,5 +1,5 @@
-from purely_imaginary_number import PurelyImaginaryNumber
-from real_number import RealNumber
+from complex_number.purely_imaginary_number import PurelyImaginaryNumber
+from complex_number.real_number import RealNumber
 
 
 class ImaginaryNumber:

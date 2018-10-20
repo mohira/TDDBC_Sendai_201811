@@ -1,8 +1,8 @@
 import unittest
 
-from imaginary_number import ImaginaryNumber
-from real_number import 実部条件Error
-from purely_imaginary_number import PurelyImaginaryNumber, 虚部条件Error
+from complex_number.imaginary_number import ImaginaryNumber
+from complex_number.purely_imaginary_number import PurelyImaginaryNumber, 虚部条件Error
+from complex_number.real_number import 実部条件Error
 
 
 class TestComplexNumber(unittest.TestCase):
