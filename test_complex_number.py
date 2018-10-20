@@ -4,9 +4,6 @@ from complex_number import PurelyImaginaryNumber
 
 
 class TestComplexNumber(unittest.TestCase):
-    def setUp(self):
-        self.complex_number = PurelyImaginaryNumber()
-
     def test_整数を渡すと純虚数が文字列として返される(self):
         with self.subTest("正常系: 2 -> 2i"):
             self.assertEqual("2i", PurelyImaginaryNumber(2).value_as_str())
@@ -26,18 +23,13 @@ class TestComplexNumber(unittest.TestCase):
 
     def test_純虚数を渡すと共役な純虚数が返される(self):
         with self.subTest("正常系: 3i -> -3i"):
-            純虚数3i = self.complex_number.create_純虚数_from整数(integer_number=3)
-            self.assertEqual("-3i", self.complex_number.create_共役な純虚数_from純虚数(純虚数3i))
+            self.assertEqual(PurelyImaginaryNumber(-3), PurelyImaginaryNumber(3).to_共役())
 
         with self.subTest("準正常系: i -> -i"):
-            純虚数i = self.complex_number.create_純虚数_from整数(integer_number=1)
-
-            self.assertEqual("-i", self.complex_number.create_共役な純虚数_from純虚数(純虚数i))
+            self.assertEqual(PurelyImaginaryNumber(-1), PurelyImaginaryNumber(1).to_共役())
 
         with self.subTest("準正常系: -i -> i"):
-            純虚数マイナスi = self.complex_number.create_純虚数_from整数(integer_number=-1)
-
-            self.assertEqual("i", self.complex_number.create_共役な純虚数_from純虚数(純虚数マイナスi))
+            self.assertEqual(PurelyImaginaryNumber(1), PurelyImaginaryNumber(-1).to_共役())
 
 
 if __name__ == "__main__":
