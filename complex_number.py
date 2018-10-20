@@ -11,6 +11,11 @@ class 虚部条件Error(Exception):
     pass
 
 
+class 実部条件Error(Exception):
+    # 数学の定義において実部は実数だが、現状は整数のみを虚部の条件としている
+    pass
+
+
 class PurelyImaginaryNumber:
     def __init__(self, 虚部: int):
         if 虚部 == 0 or (not isinstance(虚部, int)):
@@ -37,6 +42,9 @@ class PurelyImaginaryNumber:
 
 class ImaginaryNumber:
     def __init__(self, 実部: int, 虚部: int):
+        if 実部 == 0 or (not isinstance(実部, int)):
+            raise 実部条件Error(f"{実部}は0以外の整数である必要があります。")
+
         self.実部 = 実部
         self.純虚数 = PurelyImaginaryNumber(虚部)
 

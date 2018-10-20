@@ -1,6 +1,6 @@
 import unittest
 
-from complex_number import PurelyImaginaryNumber, 虚部条件Error, ImaginaryNumber
+from complex_number import PurelyImaginaryNumber, 虚部条件Error, ImaginaryNumber, 実部条件Error
 
 
 class TestComplexNumber(unittest.TestCase):
@@ -17,12 +17,20 @@ class TestComplexNumber(unittest.TestCase):
         with self.subTest("実部: 3, 虚部:  -1 -> '3 - i'"):
             self.assertEqual("3 - i", ImaginaryNumber(実部=3, 虚部=-1).to_str())
 
-    def test_純虚数の虚部の条件(self):
-        with self.subTest("0以外の整数でなければならない"):
-            self.assertRaises(虚部条件Error, lambda: PurelyImaginaryNumber(0))
+    def test_実部の条件(self):
+        with self.subTest("実部は整数以外の型であってはならない"):
+            self.assertRaises(実部条件Error, lambda: ImaginaryNumber(実部="1", 虚部=4).to_str())
 
-        with self.subTest("整数型でなければならない"):
+        with self.subTest("実部は0であってはならない"):
+            self.assertRaises(実部条件Error, lambda: ImaginaryNumber(実部=0, 虚部=4).to_str())
+
+
+    def test_虚部の条件(self):
+        with self.subTest("実部は整数以外の型であってはならない"):
             self.assertRaises(虚部条件Error, lambda: PurelyImaginaryNumber("1"))
+
+        with self.subTest("実部は0であってはならない"):
+            self.assertRaises(虚部条件Error, lambda: PurelyImaginaryNumber(0))
 
     def test_整数を渡すと純虚数が文字列として返される(self):
         with self.subTest("正常系: 2 -> 2i"):
