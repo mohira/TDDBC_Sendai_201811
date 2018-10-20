@@ -3,19 +3,19 @@ from complex_number.real_number import RealNumber
 
 
 class ImaginaryNumber:
-    def __init__(self, 実部: int, 虚部: int):
-        self.実部 = RealNumber(実部)
-        self.虚部 = PurelyImaginaryNumber(虚部)
+    def __init__(self, real_part: int, imaginary_part: int):
+        self.real_part = RealNumber(real_part)
+        self.imaginary_part = PurelyImaginaryNumber(imaginary_part)
 
     def __eq__(self, other):
-        return (self.実部 == other.実部) and (self.虚部 == other.虚部)
+        return (self.real_part == other.real_part) and (self.imaginary_part == other.imaginary_part)
 
-    def to_str(self) -> str:
-        if self.虚部.虚部 > 0:
-            return f"{self.実部.to_str()} + {self.虚部.to_str()}"
+    def notation(self) -> str:
+        if self.imaginary_part.value > 0:
+            return f"{self.real_part.value} + {self.imaginary_part.notation()}"
 
-        if self.虚部.虚部 < 0:
-            return f"{self.実部.to_str()} - {self.虚部.to_共役().to_str()}"
+        if self.imaginary_part.value < 0:
+            return f"{self.real_part.value} - {self.imaginary_part.to_conjugate().notation()}"
 
-    def to_共役(self):
-        return ImaginaryNumber(self.実部.実部, self.虚部.to_共役().虚部)
+    def to_conjugate(self):
+        return ImaginaryNumber(self.real_part.value, self.imaginary_part.to_conjugate().value)

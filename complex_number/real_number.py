@@ -1,17 +1,14 @@
-class 実部条件Error(Exception):
-    # 数学の定義において実部は実数だが、現状は0以外の整数を虚部の条件としている
+class RealPartConditionError(Exception):
+    # 数学の定義では実部は実数であることが条件だが、現状は0以外の整数のみを実部条件とするのが仕様
     pass
 
 
 class RealNumber:
-    def __init__(self, 実部: int):
-        if 実部 == 0 or (not isinstance(実部, int)):
-            raise 実部条件Error(f"{実部}は実部条件を満たしません。実部は0以外の整数である必要があります。")
+    def __init__(self, real_part: int):
+        if real_part == 0 or (not isinstance(real_part, int)):
+            raise RealPartConditionError(f"{real_part}は実部条件を満たしません。実部は0以外の整数である必要があります。")
 
-        self.実部 = 実部
-
-    def to_str(self):
-        return str(self.実部)
+        self.value = real_part
 
     def __eq__(self, other):
-        return self.実部 == other.実部
+        return self.value == other.value

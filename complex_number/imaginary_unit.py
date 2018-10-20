@@ -1,6 +1,6 @@
 from enum import Enum
 
 
-class 虚数単位(Enum):
+class ImaginaryUnit(Enum):
     plus = "i"
     minus = "-i"
