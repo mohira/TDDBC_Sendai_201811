@@ -4,7 +4,7 @@ from complex_number import PurelyImaginaryNumber, 虚部条件Error, ImaginaryNu
 
 
 class TestComplexNumber(unittest.TestCase):
-    def test_虚数をつくってその文字列表現を取得する(self):
+    def test_虚数の生成とその文字列表現(self):
         with self.subTest("実部: 3, 虚部:  4 -> '3 + 4i'"):
             self.assertEqual("3 + 4i", ImaginaryNumber(実部=3, 虚部=4).to_str())
 
@@ -32,7 +32,7 @@ class TestComplexNumber(unittest.TestCase):
         with self.subTest("実部は0であってはならない"):
             self.assertRaises(虚部条件Error, lambda: PurelyImaginaryNumber(0))
 
-    def test_整数を渡すと純虚数が文字列として返される(self):
+    def test_純虚数の生成とその文字列表現(self):
         with self.subTest("正常系: 2 -> 2i"):
             self.assertEqual("2i", PurelyImaginaryNumber(2).to_str())
 
