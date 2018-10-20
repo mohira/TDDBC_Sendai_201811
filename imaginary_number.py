@@ -16,3 +16,6 @@ class ImaginaryNumber:
 
         if self.虚部.虚部 < 0:
             return f"{self.実部.to_str()} - {self.虚部.to_共役().to_str()}"
+
+    def to_共役(self):
+        return ImaginaryNumber(self.実部.実部, self.虚部.to_共役().虚部)
