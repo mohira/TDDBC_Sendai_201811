@@ -3,7 +3,7 @@ import unittest
 from complex_number import ComplexNumber
 
 
-class TestImaginaryNumber(unittest.TestCase):
+class TestComplexNumber(unittest.TestCase):
     def setUp(self):
         self.complex_number = ComplexNumber()
 

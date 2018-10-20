@@ -12,11 +12,15 @@ class ComplexNumber:
         return 純虚数その1 == 純虚数その2
 
     def create_共役な純虚数_from純虚数(self, 純虚数: str):
+        虚部 = self.get_虚部(純虚数)
+
+        return self.create_純虚数_from整数(-1 * 虚部)
+
+    def get_虚部(self, 純虚数: str) -> int:
         if 純虚数 == "i":
-            return "-i"
+            return 1
+
         if 純虚数 == "-i":
-            return "i"
+            return -1
 
-        虚部 = int(純虚数[:-1])
-
-        return "{}i".format(-1 * 虚部)
+        return int(純虚数[:-1])
