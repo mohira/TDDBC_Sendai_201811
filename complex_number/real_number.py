@@ -6,7 +6,7 @@ class 実部条件Error(Exception):
 class RealNumber:
     def __init__(self, 実部: int):
         if 実部 == 0 or (not isinstance(実部, int)):
-            raise 実部条件Error(f"{実部}は0以外の整数である必要があります。")
+            raise 実部条件Error(f"{実部}は実部条件を満たしません。実部は0以外の整数である必要があります。")
 
         self.実部 = 実部
 

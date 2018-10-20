@@ -9,7 +9,7 @@ class 虚部条件Error(Exception):
 class PurelyImaginaryNumber:
     def __init__(self, 虚部: int):
         if 虚部 == 0 or (not isinstance(虚部, int)):
-            raise 虚部条件Error(f"{虚部}は0以外の整数である必要があります。")
+            raise 虚部条件Error(f"{虚部}は虚部条件を満たしません。虚部は0以外の整数である必要があります。")
 
         self.虚部 = 虚部
 
