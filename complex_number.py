@@ -1,4 +1,7 @@
-class ComplexNumber:
+class PurelyImaginaryNumber:
+    def __init__(self, num: int=None):
+        self.虚部 = num
+
     def create_純虚数_from整数(self, integer_number: int) -> str:
         if integer_number == 1:
             return "i"
@@ -24,3 +27,12 @@ class ComplexNumber:
             return -1
 
         return int(純虚数[:-1])
+
+    def value_as_str(self) -> str:
+        if self.虚部 == 1:
+            return "i"
+
+        if self.虚部 == -1:
+            return "-i"
+
+        return f"{self.虚部}i"
