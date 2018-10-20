@@ -67,7 +67,7 @@ class TestComplexNumber(unittest.TestCase):
         with self.subTest("「3 + 4i」と 「3 - 4i」 は同一ではない"):
             self.assertNotEqual(ImaginaryNumber(実部=3, 虚部=4), ImaginaryNumber(実部=3, 虚部=-4))
 
-    def test_共役な複素数(self):
+    def test_共役な虚数(self):
         with self.subTest("「3 + 4i」の共役な複素数は「3 - 4i」"):
             self.assertEqual(ImaginaryNumber(実部=3, 虚部=-4), ImaginaryNumber(実部=3, 虚部=4).to_共役())
 
