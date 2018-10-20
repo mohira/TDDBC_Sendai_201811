@@ -60,6 +60,14 @@ class TestComplexNumber(unittest.TestCase):
         with self.subTest("実部: 3, 虚部:  -1 -> '3 - i'"):
             self.assertEqual("3 - i", ImaginaryNumber(実部=3, 虚部=-1).to_str())
 
+    def test_2つの虚数の同一性の判定(self):
+        with self.subTest("「3 + 4i」と 「3 + 4i」 は同一である"):
+            self.assertEqual(ImaginaryNumber(実部=3, 虚部=4), ImaginaryNumber(実部=3, 虚部=4))
+
+        with self.subTest("「3 + 4i」と 「3 - 4i」 は同一ではない"):
+            self.assertNotEqual(ImaginaryNumber(実部=3, 虚部=4), ImaginaryNumber(実部=3, 虚部=-4))
+
+
 
 if __name__ == "__main__":
     unittest.main()

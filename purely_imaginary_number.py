@@ -1,6 +1,11 @@
 from enum import Enum
 
 
+class 虚部条件Error(Exception):
+    # 数学の定義において虚部は実数だが、現状は0以外の整数のみを虚部の条件としている
+    pass
+
+
 class PurelyImaginaryNumber:
     def __init__(self, 虚部: int):
         if 虚部 == 0 or (not isinstance(虚部, int)):
@@ -23,11 +28,6 @@ class PurelyImaginaryNumber:
 
     def to_共役(self):
         return PurelyImaginaryNumber(-1 * self.虚部)
-
-
-class 虚部条件Error(Exception):
-    # 数学の定義において虚部は実数だが、現状は0以外の整数のみを虚部の条件としている
-    pass
 
 
 class 虚数単位(Enum):
