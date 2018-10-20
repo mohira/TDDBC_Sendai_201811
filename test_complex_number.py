@@ -14,13 +14,13 @@ class TestComplexNumber(unittest.TestCase):
             self.assertRaises(虚部条件Error, lambda: PurelyImaginaryNumber(0))
 
     def test_純虚数の生成とその文字列表現(self):
-        with self.subTest("正常系: 2 -> 2i"):
+        with self.subTest("正常系: 2 -> '2i'"):
             self.assertEqual("2i", PurelyImaginaryNumber(2).to_str())
 
-        with self.subTest("準正常系: 1 -> i"):
+        with self.subTest("準正常系: 1 -> 'i'"):
             self.assertEqual("i", PurelyImaginaryNumber(1).to_str())
 
-        with self.subTest("準正常系: -1 -> i"):
+        with self.subTest("準正常系: -1 -> '-i'"):
             self.assertEqual("-i", PurelyImaginaryNumber(-1).to_str())
 
     def test_2つの純虚数の同一性の判定(self):

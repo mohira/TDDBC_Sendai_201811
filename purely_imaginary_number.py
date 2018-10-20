@@ -14,7 +14,6 @@ class PurelyImaginaryNumber:
         self.虚部 = 虚部
 
     def __eq__(self, other) -> bool:
-        # 純虚数は実部がないので虚部のみの比較でOKのはず
         return self.虚部 == other.虚部
 
     def to_str(self) -> str:
