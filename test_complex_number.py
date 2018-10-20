@@ -1,9 +1,16 @@
 import unittest
 
-from complex_number import PurelyImaginaryNumber
+from complex_number import PurelyImaginaryNumber, 虚部条件Error
 
 
 class TestComplexNumber(unittest.TestCase):
+    def test_純虚数の虚部の条件(self):
+        with self.subTest("0以外の整数でなければならない"):
+            self.assertRaises(虚部条件Error, lambda: PurelyImaginaryNumber(0))
+
+        with self.subTest("整数型でなければならない"):
+            self.assertRaises(虚部条件Error, lambda: PurelyImaginaryNumber("1"))
+
     def test_整数を渡すと純虚数が文字列として返される(self):
         with self.subTest("正常系: 2 -> 2i"):
             self.assertEqual("2i", PurelyImaginaryNumber(2).to_str())

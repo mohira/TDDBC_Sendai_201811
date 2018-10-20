@@ -6,8 +6,16 @@ class 虚数単位(Enum):
     minus = "-i"
 
 
+class 虚部条件Error(Exception):
+    # 数学の定義において虚部は実数だが、現状は整数のみを虚部の条件としている
+    pass
+
+
 class PurelyImaginaryNumber:
-    def __init__(self, num: int = None):
+    def __init__(self, num: int):
+        if num == 0 or (not isinstance(num, int)):
+            raise 虚部条件Error(f"{num}は虚部にはなれません。0以外の整数である必要があります。")
+
         self.虚部 = num
 
     def __eq__(self, other) -> bool:
