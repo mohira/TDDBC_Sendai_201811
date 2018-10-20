@@ -1,9 +1,22 @@
 import unittest
 
-from complex_number import PurelyImaginaryNumber, 虚部条件Error
+from complex_number import PurelyImaginaryNumber, 虚部条件Error, ImaginaryNumber
 
 
 class TestComplexNumber(unittest.TestCase):
+    def test_虚数をつくってその文字列表現を取得する(self):
+        with self.subTest("実部: 3, 虚部:  4 -> '3 + 4i'"):
+            self.assertEqual("3 + 4i", ImaginaryNumber(実部=3, 虚部=4).to_str())
+
+        with self.subTest("実部: 3, 虚部: -4 -> '3 - 4i'"):
+            self.assertEqual("3 - 4i", ImaginaryNumber(実部=3, 虚部=-4).to_str())
+
+        with self.subTest("実部: 3, 虚部:  1 -> '3 + i'"):
+            self.assertEqual("3 + i", ImaginaryNumber(実部=3, 虚部=1).to_str())
+
+        with self.subTest("実部: 3, 虚部:  -1 -> '3 - i'"):
+            self.assertEqual("3 - i", ImaginaryNumber(実部=3, 虚部=-1).to_str())
+
     def test_純虚数の虚部の条件(self):
         with self.subTest("0以外の整数でなければならない"):
             self.assertRaises(虚部条件Error, lambda: PurelyImaginaryNumber(0))

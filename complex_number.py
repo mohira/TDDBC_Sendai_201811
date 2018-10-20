@@ -12,11 +12,11 @@ class 虚部条件Error(Exception):
 
 
 class PurelyImaginaryNumber:
-    def __init__(self, num: int):
-        if num == 0 or (not isinstance(num, int)):
-            raise 虚部条件Error(f"{num}は虚部にはなれません。0以外の整数である必要があります。")
+    def __init__(self, 虚部: int):
+        if 虚部 == 0 or (not isinstance(虚部, int)):
+            raise 虚部条件Error(f"{虚部}は0以外の整数である必要があります。")
 
-        self.虚部 = num
+        self.虚部 = 虚部
 
     def __eq__(self, other) -> bool:
         # 純虚数は実部がないので虚部のみの比較でOKのはず
@@ -33,3 +33,16 @@ class PurelyImaginaryNumber:
 
     def to_共役(self):
         return PurelyImaginaryNumber(-1 * self.虚部)
+
+
+class ImaginaryNumber:
+    def __init__(self, 実部: int, 虚部: int):
+        self.実部 = 実部
+        self.純虚数 = PurelyImaginaryNumber(虚部)
+
+    def to_str(self) -> str:
+        if self.純虚数.虚部 > 0:
+            return f"{self.実部} + {self.純虚数.to_str()}"
+
+        if self.純虚数.虚部 < 0:
+            return f"{self.実部} - {self.純虚数.to_共役().to_str()}"
