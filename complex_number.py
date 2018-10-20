@@ -1,6 +1,10 @@
 class PurelyImaginaryNumber:
-    def __init__(self, num: int=None):
+    def __init__(self, num: int = None):
         self.虚部 = num
+
+    def __eq__(self, other) -> bool:
+        # 純虚数は実部がないので虚部のみの比較でOKのはず
+        return self.虚部 == other.虚部
 
     def create_純虚数_from整数(self, integer_number: int) -> str:
         if integer_number == 1:
@@ -10,9 +14,6 @@ class PurelyImaginaryNumber:
             return "-i"
 
         return "{}i".format(integer_number)
-
-    def 同一ですか(self, 純虚数その1, 純虚数その2):
-        return 純虚数その1 == 純虚数その2
 
     def create_共役な純虚数_from純虚数(self, 純虚数: str):
         虚部 = self.get_虚部(純虚数)

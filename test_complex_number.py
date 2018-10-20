@@ -19,16 +19,10 @@ class TestComplexNumber(unittest.TestCase):
 
     def test_2つの純虚数の同一性の判定(self):
         with self.subTest("3i と 3i は同一である"):
-            純虚数その1 = self.complex_number.create_純虚数_from整数(integer_number=3)
-            純虚数その2 = self.complex_number.create_純虚数_from整数(integer_number=3)
-
-            self.assertTrue(self.complex_number.同一ですか(純虚数その1, 純虚数その2))
+            self.assertEqual(PurelyImaginaryNumber(3), PurelyImaginaryNumber(3))
 
         with self.subTest("3i と 4i は同一ではない"):
-            純虚数その1 = self.complex_number.create_純虚数_from整数(integer_number=3)
-            純虚数その2 = self.complex_number.create_純虚数_from整数(integer_number=4)
-
-            self.assertFalse(self.complex_number.同一ですか(純虚数その1, 純虚数その2))
+            self.assertNotEqual(PurelyImaginaryNumber(3), PurelyImaginaryNumber(4))
 
     def test_純虚数を渡すと共役な純虚数が返される(self):
         with self.subTest("正常系: 3i -> -3i"):
