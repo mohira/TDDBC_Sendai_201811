@@ -14,6 +14,15 @@ class TestImaginaryNumber(unittest.TestCase):
 
         self.assertEqual("2i", actual)
 
+    def test_整数3を渡すと純虚数3iが文字列として返される(self):
+        complex_number = ComplexNumber()
+
+        actual = complex_number.create_純虚数_from整数(integer_number=3)
+
+        self.assertEqual("3i", actual)
+
+
+
 
 if __name__ == "__main__":
     unittest.main()
