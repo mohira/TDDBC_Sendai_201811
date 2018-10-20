@@ -1,30 +1,11 @@
 import unittest
 
-from complex_number import PurelyImaginaryNumber, 虚部条件Error, ImaginaryNumber, 実部条件Error
+from imaginary_number import ImaginaryNumber
+from real_number import 実部条件Error
+from purely_imaginary_number import PurelyImaginaryNumber, 虚部条件Error
 
 
 class TestComplexNumber(unittest.TestCase):
-    def test_虚数の生成とその文字列表現(self):
-        with self.subTest("実部: 3, 虚部:  4 -> '3 + 4i'"):
-            self.assertEqual("3 + 4i", ImaginaryNumber(実部=3, 虚部=4).to_str())
-
-        with self.subTest("実部: 3, 虚部: -4 -> '3 - 4i'"):
-            self.assertEqual("3 - 4i", ImaginaryNumber(実部=3, 虚部=-4).to_str())
-
-        with self.subTest("実部: 3, 虚部:  1 -> '3 + i'"):
-            self.assertEqual("3 + i", ImaginaryNumber(実部=3, 虚部=1).to_str())
-
-        with self.subTest("実部: 3, 虚部:  -1 -> '3 - i'"):
-            self.assertEqual("3 - i", ImaginaryNumber(実部=3, 虚部=-1).to_str())
-
-    def test_実部の条件(self):
-        with self.subTest("実部は整数以外の型であってはならない"):
-            self.assertRaises(実部条件Error, lambda: ImaginaryNumber(実部="1", 虚部=4).to_str())
-
-        with self.subTest("実部は0であってはならない"):
-            self.assertRaises(実部条件Error, lambda: ImaginaryNumber(実部=0, 虚部=4).to_str())
-
-
     def test_虚部の条件(self):
         with self.subTest("実部は整数以外の型であってはならない"):
             self.assertRaises(虚部条件Error, lambda: PurelyImaginaryNumber("1"))
@@ -58,6 +39,26 @@ class TestComplexNumber(unittest.TestCase):
 
         with self.subTest("準正常系: -i -> i"):
             self.assertEqual(PurelyImaginaryNumber(1), PurelyImaginaryNumber(-1).to_共役())
+
+    def test_実部の条件(self):
+        with self.subTest("実部は整数以外の型であってはならない"):
+            self.assertRaises(実部条件Error, lambda: ImaginaryNumber(実部="1", 虚部=4).to_str())
+
+        with self.subTest("実部は0であってはならない"):
+            self.assertRaises(実部条件Error, lambda: ImaginaryNumber(実部=0, 虚部=4).to_str())
+
+    def test_虚数の生成とその文字列表現(self):
+        with self.subTest("実部: 3, 虚部:  4 -> '3 + 4i'"):
+            self.assertEqual("3 + 4i", ImaginaryNumber(実部=3, 虚部=4).to_str())
+
+        with self.subTest("実部: 3, 虚部: -4 -> '3 - 4i'"):
+            self.assertEqual("3 - 4i", ImaginaryNumber(実部=3, 虚部=-4).to_str())
+
+        with self.subTest("実部: 3, 虚部:  1 -> '3 + i'"):
+            self.assertEqual("3 + i", ImaginaryNumber(実部=3, 虚部=1).to_str())
+
+        with self.subTest("実部: 3, 虚部:  -1 -> '3 - i'"):
+            self.assertEqual("3 - i", ImaginaryNumber(実部=3, 虚部=-1).to_str())
 
 
 if __name__ == "__main__":
